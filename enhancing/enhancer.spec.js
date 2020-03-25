@@ -114,4 +114,17 @@ describe('enhancer.js', function() {
         });
     })
 
+    /////////////////////////////////////////////////////
+    // .GET TESTS (STRETCH)
+    describe('.get()', function() {
+        it('should return item name modified with enhancement level', function() {
+            let sword = {};
+            sword.enhancement = 5;
+            sword.name = 'excalibur';
+            const gotten = get(sword);
+
+            expect(gotten.name).toBe('[+5]excalibur')
+        })
+    })
+
 })

@@ -47,7 +47,16 @@ function repair(item) {
 }
 
 function get(item) {
-  return { ...item };
+  if (isNumber(item.enhancement)) {
+    if(item.enhancement === 0) {
+      return { ...item };
+    } else if (item.enhancement > 0) {
+      let name = item.name;
+      let num = item.enhancement;
+      item.name = `[+${num}]${name}`;
+      return { ...item};
+    }
+  } else throw new Error("invalid enhancement value");
 }
 
 
