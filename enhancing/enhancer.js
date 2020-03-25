@@ -21,7 +21,7 @@ function succeed(item) {
 }
 
 function fail(item) {
-  if (isNumber(item.enhancement)) {
+  if (isNumber(item.enhancement) && isNumber(item.durability)) {
     if (item.enhancement < 15) {
      item.durability -= 5;
      return { ...item };

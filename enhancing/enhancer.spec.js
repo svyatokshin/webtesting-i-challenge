@@ -26,6 +26,7 @@ describe('enhancer.js', function() {
         })
     })
 //////////////////////////////////////////////////////////////////////////////////////
+// Succeed Tests
     describe('.succeed()', function() {
         it('should enhance item if level is not 20', function() {
             let blade_of_grass = {};
@@ -64,7 +65,7 @@ describe('enhancer.js', function() {
         })
     })
     /////////////////////////////////////////////////////////////////////////
-    // FAIL FUNCTION
+    // FAIL Tests
     describe('.fail()', function() {
         it('should return item -5 durability(45) for item fail', function() {
             let shield = {};
@@ -93,6 +94,24 @@ describe('enhancer.js', function() {
             expect(newItem1.durability).toBe(40);
             expect(newItem1.enhancement).toBe(16);
         })
+
+        it('should throw because enhancement is NaN', function() {
+            let shield1 = {};
+            shield1.durability = 50;
+            shield1.enhancement = NaN;
+            expect(() => {
+                fail(shield1);
+            }).toThrow();
+        });
+
+        it('should throw because durability is NaN', function() {
+            let shield1 = {};
+            shield1.durability = NaN;
+            shield1.enhancement = 17;
+            expect(() => {
+                fail(shield1);
+            }).toThrow();
+        });
     })
 
 })
